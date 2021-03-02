@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;1,200&amp;display=swap');
+body {
+  font-family: 'Montserrat', sans-serif;
+  -webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+}
+.altcolor{
+    background-color: lightyellow;
+    border-radius:15px;
+    margin-top:20px;
+    padding:20px;
+    opacity: 0.96;
+}
+.form-control {
+    display: inline-block;
+}
+
+.invis {
+    display: none;
+}
+
+.button-red {
+    background-color: #de5b5b;
+    border-color: #de5b5b;
+    color: #fff;
+}
+
+.navis {
+	font-size: 25px;
+	color: #333;
+}
+
+.jumbotron {
+    background-color: #fefefa;
+}
+
+.jumbotron .btn {
+    font-size: 15px;
+}
+
+.h2, h2 {
+    font-size: 22px;
+}
+
+.h4, h4 {
+    font-size: 15px;
+}
+
+body {
+    background: url("bg1.jpg");
+    background-size: 100% 100%;
+}
+
+.jumbotron {
+    background: none;
+}
+
+.shadow {
+  --tw-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+border-width: 1px;
+--tw-border-opacity: 1;
+border-color: rgba(165, 180, 252, var(--tw-border-opacity));
+}
+
+#buyPichu, #buyPikachu, #buyRaichu {
+  font-size: 16px;
+  padding: 10px 20px!important;
+  display: inline-block;
+}
