@@ -11,4 +11,4 @@ Hatch more Pikachus with your eggs to multiply your production, or cash them out
 Pikachu Egg Farm features a high tech automated market that lets you instantly buy Pikachu or sell Pikachu Eggs. Driven by supply and demand, the price automatically adjusts as players trade.
 
 ### Referrals
-Earn **10%** the number of all eggs used by anyone who starts playing using your link: http://PikachuEgg.Finance/?ref={Your Address}
+Earn **10%** the number of all eggs used by anyone who starts playing using your link: http://PikachuEgg.Finance/?ref={Your_Address}
