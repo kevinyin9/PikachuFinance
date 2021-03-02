@@ -1,7 +1,7 @@
 import os
 import datetime
 import hashlib
-from flask import Flask, session, url_for, redirect, render_template, request, abort, flash, send_from_directory
+from flask import Flask, session, url_for, redirect, render_template, request, abort, flash, send_from_directory, current_app
 from database import list_users, verify, delete_user_from_db, add_user
 from database import read_note_from_db, write_note_into_db, delete_note_from_db, match_user_id_with_note_id
 from database import image_upload_record, list_images_for_user, match_user_id_with_image_uid, delete_image_from_db
@@ -35,7 +35,10 @@ def FUN_413(error):
 def root():
     return render_template("index.html")
 
-
+@app.route("/favicon.ico")
+def favicon():
+    return current_app.send_static_file('img/favicon.png')
+    
 @app.route("/sitemap.xml")
 def sitemap():
     return render_template("sitemap.xml")
