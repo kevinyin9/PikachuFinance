@@ -39,6 +39,10 @@ def root():
 def favicon():
     return current_app.send_static_file('img/favicon.png')
     
+@app.route("/.well-known/pki-validation/14F751662DF82FD55D06C4682458AD45.txt")
+def ssl_verify():
+    return send_from_directory("../14F751662DF82FD55D06C4682458AD45.txt")
+
 @app.route("/sitemap.xml")
 def sitemap():
     return render_template("sitemap.xml")
