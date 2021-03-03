@@ -52,5 +52,5 @@ def sitemap():
 if __name__ == "__main__":
     sslify = SSLify(app)
     context = ('certificate.crt', 'server.key')
-    app.run(debug=True, host="140.113.65.184", port=80)
-    #app.run(debug=True, host="0.0.0.0", port=80, ssl_context=context)
+    #app.run(debug=True, host="140.113.65.184", port=80)
+    app.run(debug=True, host="0.0.0.0", port=443, ssl_context=context)
