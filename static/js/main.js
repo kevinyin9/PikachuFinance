@@ -412,5 +412,5 @@ function enableButtons() {
 
 function setRef() {
   console.log("set ref called");
-  document.getElementById("playerreflink").innerHTML = 'http://YoshiEgg.Finance/?ref=' + this.userAddress;
+  document.getElementById("playerreflink").innerHTML = 'http://pikachuegg.finance/?ref=' + this.userAddress;
 }
