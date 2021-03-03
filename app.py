@@ -6,6 +6,12 @@ from database import list_users, verify, delete_user_from_db, add_user
 from database import read_note_from_db, write_note_into_db, delete_note_from_db, match_user_id_with_note_id
 from database import image_upload_record, list_images_for_user, match_user_id_with_image_uid, delete_image_from_db
 from werkzeug.utils import secure_filename
+from flask_sslify import SSLify
+from OpenSSL import SSL
+
+context = SSL.Context(SSL.PROTOCOL_TLSv1_2)
+context.use_privatekey_file('private.key')
+context.use_certificate_file('certificate.crt')  
 
 app = Flask(__name__)
 app.config.from_object('config')
@@ -48,5 +54,6 @@ def sitemap():
     return render_template("sitemap.xml")
 
 if __name__ == "__main__":
-    app.run(debug=True, host="140.113.65.184", port=5000)
-    #app.run(debug=True, host="127.0.0.1", port=80)
+    sslify = SSLify(app)
+    app.run(debug=True, host="140.113.65.184", port=5000, ssl_context=context)
+    #app.run(debug=True, host="0.0.0.0", port=80, ssl_context=context)
