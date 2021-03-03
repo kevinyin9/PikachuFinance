@@ -9,10 +9,6 @@ from werkzeug.utils import secure_filename
 from flask_sslify import SSLify
 from OpenSSL import SSL
 
-context = SSL.Context(SSL.PROTOCOL_TLSv1_2)
-context.use_privatekey_file('private.key')
-context.use_certificate_file('certificate.crt')  
-
 app = Flask(__name__)
 app.config.from_object('config')
 
@@ -55,5 +51,6 @@ def sitemap():
 
 if __name__ == "__main__":
     sslify = SSLify(app)
-    app.run(debug=True, host="140.113.65.184", port=5000, ssl_context=context)
+    context = ('certificate.crt', 'server.key')
+    app.run(debug=True, host="140.113.65.184", ssl_context=context)
     #app.run(debug=True, host="0.0.0.0", port=80, ssl_context=context)
