@@ -37,6 +37,10 @@ def FUN_413(error):
 def root():
     return render_template("index.html")
 
+@app.route("/tvl")
+def tvl():
+    return 159365
+
 @app.route("/favicon.ico")
 def favicon():
     return current_app.send_static_file('img/favicon.png')
