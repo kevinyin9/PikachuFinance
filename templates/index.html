@@ -71,10 +71,19 @@
          <div class="jumbotron">
             <div class="row" style="margin-top: -50px;">
                <div class="container">
-                  <p style="font-size: 18px; margin-top: 3px; color:lightyellow"><b>The purpose of the game is to collect Pikachu eggs to grow your Pikachu family or choose to sell the eggs for BNB!</b></p>
+                  <p style="font-size: 40px; font-weight: 900;">Our Partners</p>
+                  <img src="{{ url_for('static', filename='img/certik.png') }}" height='200px' style="border:2px black solid;">
+                  <img src="{{ url_for('static', filename='img/pancakeswap.png') }}" height='200px' style="border:2px black solid;">
+                  <img src="{{ url_for('static', filename='img/binance.png') }}" height='200px' style="border:2px black solid;">
                </div>
                <div class="container">
-                  <p id='tvl'>Total value in the pool: </p>
+                  <p style="font-size: 25px; margin-top: 3px; color:lightyellow"><b>Collecting Your Pikachu Eggs to grow your Pikachu family <br> or sell the eggs earning BNB!</b></p>
+               </div>
+               <div class="container">
+                  <p id='tvl'></p>
+               </div>
+               <div class="container">
+                  <p id='people'></p>
                </div>
             </div>
             <div class="row">
@@ -89,7 +98,7 @@
                            <h4 style="margin: -5px; letter-spacing: 0.3px; line-height: 1.4;"> Pichu find the least eggs/hr. <br> - <br> <br> Cost: 1x</h4>
                            <div class="row" style="margin: 10px;">
                               <h2><span id="numdragon"> 0</h2>
-                              <h4>Pichu</h4>
+                              <h3>Pichu</h3>
                               <br>
                            </div>
                         <div class="row" style="margin-top: 30px">
@@ -115,14 +124,14 @@
                            <img src="{{ url_for('static', filename='img/2.png') }}" height="215" alt="Pikachu">
                         </div>
                         <div>
-                           <h4 style="margin: 10px; letter-spacing: 0.3px; line-height: 1.4;"> Pikachus find 10x more eggs/hr than Pichus! <br> - <br> Cost: 8x</h4>
+                           <h4 style="margin: 10px; letter-spacing: 0.3px; line-height: 1.4;"> Pikachus find 10x more eggs than Pichus! <br> - <br> Cost: 8x</h4>
                            <div id="pikachuNotBought" class="row" style="margin: 10px;" >
                               <h2> 0</h2>
-                              <h4>Pikachus</h4>
+                              <h3>Pikachus</h3>
                            </div>
                            <div id="pikachuBought" class="row" style="display: none; margin: 10px" >
                               <h3><span id="numdragonice">0</span></h3>
-                              <h4>Pikachu</h4>
+                              <h3>Pikachu</h3>
                            </div>
                            <div class="row" style="margin-top: 30px">
                               <div style="display: flex; align-items:center; justify-content:center">
@@ -147,14 +156,14 @@
                            <img src="{{ url_for('static', filename='img/3.png') }}" height="215" alt="Raichu">
                         </div>
                         <div>
-                           <h4 style="margin: 10px; letter-spacing: 0.3px; line-height: 1.4;"> Raichus find 25x more eggs/hr than Pichus! <br> BEST VALUE! <br> Cost: 20x</h4>
+                           <h4 style="margin: 10px; letter-spacing: 0.3px; line-height: 1.4;"> Raichus find 25x more eggs than Pichus! <br> BEST VALUE! <br> Cost: 20x</h4>
                            <div id="raichuNotBought" class="row" style="margin: 10px;" >
                               <h2> 0</h2>
-                              <h4>Raichus</h4>
+                              <h3>Raichus</h3>
                            </div>
                            <div id="raichuBought" class="row" style="display: none; margin: 10px" >
                               <h3><span id="numdragonultra">0</span> </h3>
-                              <h4>Raichu</h4>
+                              <h3>Raichu</h3>
                            </div>
                            <div class="row" style="margin-top: 30px">
                               <div style="display: flex; align-items:center; justify-content:center">

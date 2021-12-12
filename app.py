@@ -39,7 +39,7 @@ def root():
 
 @app.route("/tvl")
 def tvl():
-    return 159365
+    return "Total value in the pool: $159365"
 
 @app.route("/favicon.ico")
 def favicon():
