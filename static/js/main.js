@@ -41,14 +41,8 @@ async function checkForBinanceChain() {
 }
 
 function tvl(){
-  const url = 'http://127.0.0.1:5000/tvl'
-    fetch(url)
-    .then(response => response.text())  
-    .then(json => {
-        console.log(json);
-        document.getElementById("tvl").innerHTML = json
-        document.getElementById("people").innerHTML = "Total users in the game: " + 1215
-    }) 
+  document.getElementById("tvl").innerHTML = "Total value in the pool: $159365"
+  document.getElementById("people").innerHTML = "Total users in the game: " + 1215
 }
 
 function main() {
