@@ -8,6 +8,7 @@ from database import image_upload_record, list_images_for_user, match_user_id_wi
 from werkzeug.utils import secure_filename
 from flask_sslify import SSLify
 from OpenSSL import SSL
+import random
 
 app = Flask(__name__)
 app.config.from_object('config')
@@ -41,8 +42,8 @@ money = 159365
 @app.route("/tvl")
 def tvl():
     global money
-    money += 0.2
-    return "Total value in the pool: $" + str(money)
+    money += random.random()
+    return "Total value in the pool: $" + str(round(money, 1))
 
 @app.route("/favicon.ico")
 def favicon():
