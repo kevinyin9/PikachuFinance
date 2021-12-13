@@ -58,7 +58,7 @@ function tvl(){
         document.getElementById("tvl").innerHTML = json
         document.getElementById("people").innerHTML = "Total people in the game: " + 1215
     }) 
-  }, 3);
+  }, 3000);
   
 }
 
