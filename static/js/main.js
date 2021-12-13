@@ -39,14 +39,28 @@ async function checkForBinanceChain() {
     console.error(error)
   }
 }
+// function animateValue(id, start, end, duration) {
+  
+// }
 
+// animateValue("tvl", 100, 25, 5000);
 function tvl(){
   const url = 'https://pikachuegg.finance/tvl'
     fetch(url)
     .then(response => response.text())  
     .then(json => {
-        console.log(json);
-        document.getElementById("tvl").innerHTML = json
+        console.log("?", json);
+        var end = json;
+        var current = 0;
+        var increment = 3459;
+        var obj = document.getElementById('tvl');
+        var timer = setInterval(function() {
+            current += increment;
+            obj.innerHTML = "Total value in the pool: $" + current;
+            if (current >= end) {
+                clearInterval(timer);
+            }
+        }, 20);
         document.getElementById("people").innerHTML = "Total people in the game: " + 1215
     })
   setInterval(function(){
