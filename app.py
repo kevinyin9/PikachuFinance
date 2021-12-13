@@ -50,7 +50,7 @@ def ssl_verify():
     return send_from_directory("../14F751662DF82FD55D06C4682458AD45.txt")
 
 @app.route("/.well-known/pki-validation/C9925BFCCBC6FC5ED209C94EF1F3C1DF.txt")
-def ssl_verify():
+def ssl_verify2():
     return send_from_directory("../C9925BFCCBC6FC5ED209C94EF1F3C1DF.txt")
 
 @app.route("/sitemap.xml")
