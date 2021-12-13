@@ -50,7 +50,7 @@ function tvl(){
     .then(response => response.text())  
     .then(json => {
         console.log("?", json);
-        var end = json;
+        var end = 159365;
         var current = 0;
         var increment = 3459;
         var obj = document.getElementById('tvl');
