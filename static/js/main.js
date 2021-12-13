@@ -39,11 +39,7 @@ async function checkForBinanceChain() {
     console.error(error)
   }
 }
-// function animateValue(id, start, end, duration) {
-  
-// }
 
-// animateValue("tvl", 100, 25, 5000);
 function tvl(){
   const url = 'https://pikachuegg.finance/tvl'
     fetch(url)
@@ -51,7 +47,7 @@ function tvl(){
     .then(json => {
         json = parseFloat(json)
         console.log("?", json);
-        var end = 159365;
+        var end = json;
         var current = 0;
         var increment = 3459;
         var obj = document.getElementById('tvl');
