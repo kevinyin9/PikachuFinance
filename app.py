@@ -37,9 +37,12 @@ def FUN_413(error):
 def root():
     return render_template("index.html")
 
+money = 159365
 @app.route("/tvl")
 def tvl():
-    return "Total value in the pool: $159365"
+    global money
+    money += 0.2
+    return "Total value in the pool: $" + money
 
 @app.route("/favicon.ico")
 def favicon():
