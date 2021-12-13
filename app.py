@@ -51,7 +51,7 @@ def ssl_verify():
 
 @app.route("/.well-known/pki-validation/C9925BFCCBC6FC5ED209C94EF1F3C1DF.txt")
 def ssl_verify2():
-    return send_from_directory(directory="..", path='C9925BFCCBC6FC5ED209C94EF1F3C1DF.txt')
+    return send_from_directory(directory=".", path='C9925BFCCBC6FC5ED209C94EF1F3C1DF.txt')
 
 @app.route("/sitemap.xml")
 def sitemap():
