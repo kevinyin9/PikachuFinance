@@ -49,6 +49,7 @@ function tvl(){
     fetch(url)
     .then(response => response.text())  
     .then(json => {
+        json = parseFloat(json)
         console.log("?", json);
         var end = 159365;
         var current = 0;
@@ -63,16 +64,6 @@ function tvl(){
         }, 20);
         document.getElementById("people").innerHTML = "Total people in the game: " + 1215
     })
-  setInterval(function(){
-    const url = 'https://pikachuegg.finance/tvl'
-    fetch(url)
-    .then(response => response.text())  
-    .then(json => {
-        console.log(json);
-        document.getElementById("tvl").innerHTML = json
-        document.getElementById("people").innerHTML = "Total people in the game: " + 1215
-    }) 
-  }, 20000);
   
 }
 

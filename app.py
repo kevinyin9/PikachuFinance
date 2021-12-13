@@ -38,12 +38,12 @@ def FUN_413(error):
 def root():
     return render_template("index.html")
 
-money = 159365
+money = 164365
 @app.route("/tvl")
 def tvl():
     global money
     money += random.random()
-    return round(money, 1)
+    return str(round(money, 1))
 
 @app.route("/favicon.ico")
 def favicon():
