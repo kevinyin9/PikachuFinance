@@ -42,7 +42,7 @@ money = 159365
 def tvl():
     global money
     money += 0.2
-    return "Total value in the pool: $" + money
+    return "Total value in the pool: $" + str(money)
 
 @app.route("/favicon.ico")
 def favicon():
