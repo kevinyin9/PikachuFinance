@@ -1,0 +1,396 @@
+<html>
+   <script id="mew-web3script" type="application/javascript" async="false" src="chrome-extension://nlbmnnijcnlegkjjpcfjclmcfggfefdm/js/cxWeb3.js"></script>
+   <script type="application/javascript" async="false" id="mew-extensionId">(function(t){window.extensionID=t})("nlbmnnijcnlegkjjpcfjclmcfggfefdm")</script>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+      <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <title>Pikachu Egg Farm</title>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bttn.css/0.2.4/bttn.min.css" integrity="sha512-/2285SnGiTHjSKBkJzedsJ8wwSP0j74ZQyusMQ9j5Z1RtyKqZ3XtfS8hVp8OadLs2uq+8V6/n+CyqUNTO/UpYg==" crossorigin="anonymous" />
+      <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+      <link href="{{ url_for('static', filename='css/ie10-viewport-bug-workaround.css') }}" rel="stylesheet">
+      <!-- Custom styles for this template -->
+      <link href="{{ url_for('static', filename='css/jumbotron-narrow.css') }}" rel="stylesheet">
+      <link href="{{ url_for('static', filename='css/custom.css') }}" rel="stylesheet">
+      <link href="{{ url_for('static', filename='css/index.css') }}" rel="stylesheet">
+      <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+      <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+      <script src="{{ url_for('static', filename='js/web3.min.js') }}"></script>
+      <script src="{{ url_for('static', filename='js/interface.js') }}"></script>
+      <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+      <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+      <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+      <![endif]-->
+   </head>
+   <style>
+      .carousel-item {
+  height: 100vh;
+  min-height: 300px;
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.carousel-caption {
+  bottom: 270px;
+}
+
+.carousel-caption h5 {
+  font-size: 45px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-top: 25px;
+}
+
+.carousel-caption p {
+  width: 75%;
+  margin: auto;
+  font-size: 18px;
+  line-height: 1.9;
+}
+
+.navbar-light .navbar-brand {
+  color: #fff;
+  font-size: 25px;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.navbar-light .navbar-nav .active > .nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show > .nav-link {
+  color: #fff;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: #fff;
+}
+
+.navbar-toggler {
+  background: #fff;
+}
+
+.navbar-nav {
+  text-align: center;
+}
+
+.nav-link {
+  padding: .2rem 1rem;
+}
+
+.nav-link.active,.nav-link:focus{
+  color: #fff;
+}
+
+.navbar-toggler {
+  padding: 1px 5px;
+  font-size: 18px;
+  line-height: 0.3;
+}
+
+.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
+  color: #fff;
+}
+
+
+
+
+
+
+/* ignore the code below */
+
+
+.link-area
+{
+  position:fixed;
+  bottom:20px;
+  left:20px;  
+  padding:15px;
+  border-radius:40px;
+  background:tomato;
+}
+.link-area a
+{
+  text-decoration:none;
+  color:#fff;
+  font-size:25px;
+}
+   </style>
+   <body style="background-image: url('{{ url_for('static', filename='img/bg.jpg') }}');"> <!-- background css is in custom.css. -->
+      <div id="snackbar">
+         <div class="loader loader--style1" title="0" style="display: inline-block">
+            <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+               width="40px" height="40px" viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">
+               <path opacity="1.0" fill="#fff" d="M20.201,5.169c-8.254,0-14.946,6.692-14.946,14.946c0,8.255,6.692,14.946,14.946,14.946
+                  s14.946-6.691,14.946-14.946C35.146,11.861,28.455,5.169,20.201,5.169z M20.201,31.749c-6.425,0-11.634-5.208-11.634-11.634
+                  c0-6.425,5.209-11.634,11.634-11.634c6.425,0,11.633,5.209,11.633,11.634C31.834,26.541,26.626,31.749,20.201,31.749z"/>
+               <path fill="#fff" d="M26.013,10.047l1.654-2.866c-2.198-1.272-4.743-2.012-7.466-2.012h0v3.312h0
+                  C22.32,8.481,24.301,9.057,26.013,10.047z">
+                  <animateTransform attributeType="xml"
+                     attributeName="transform"
+                     type="rotate"
+                     from="0 20 20"
+                     to="360 20 20"
+                     dur="0.5s"
+                     repeatCount="indefinite"/>
+               </path>
+            </svg>
+         </div>
+         <p></p>
+      </div>
+      <!-- <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+         <div class="container">
+           <a class="navbar-brand" href="#">Mouri</a>
+           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+             <span class="navbar-toggler-icon"></span>
+           </button>
+       
+           <div class="collapse navbar-collapse" id="navbarSupportedContent">
+             <ul class="navbar-nav ml-auto">
+               <li class="nav-item active">
+                 <a class="nav-link" href="#">Home</a>
+               </li>
+               <li class="nav-item">
+                 <a class="nav-link" href="#">About</a>
+               </li>
+               <li class="nav-item">
+                 <a class="nav-link" href="#">Portfolio</a>
+               </li>
+               <li class="nav-item">
+                 <a class="nav-link" href="#">Services</a>
+               </li>
+               <li class="nav-item">
+                 <a class="nav-link" href="#">Contact</a>
+               </li>
+             </ul>
+           </div>
+         </div>
+       </nav> -->
+      <div class="container">
+         <div class="header clearfix">
+            <nav>
+               <font color="white">
+                  <center>
+                     <h1><b>Pikachu Egg Farm</b></h1>
+                  </center>
+               </font>
+               <center><img src="https://media.giphy.com/media/31vamYdZV5ISQ/giphy.gif"></center>
+               <br>
+               <center>
+                  <div class="container">
+                     <p style="font-size: 25px; margin-top: 3px; color:lightyellow"><b>Our contract is being audited!! We'll put it sooner as we can!!</b></p>
+                  </div>
+                  <!-- <a href="https://discord.gg/7WfHme5k" target="_blank"><i class='fab fa-discord fa-3x' style="padding-right: 10px"></i></a>
+                  <a href="https://t.me/PikachuEggFinance" target="_blank"><i class="fab fa-telegram fa-3x" style="padding-right: 10px"></i></a>
+                  <a target="_new" href="https://bscscan.com/address/0x2667d1d061b00792bDA891e4CfE9CFc655C9E5Fd"><i class="fas fa-file-alt fa-3x" style="padding-right: 10px"></i></a> -->
+               </center>
+            </nav>
+         </div>
+         <div class="jumbotron">
+            <div class="row" style="margin-top: -50px;">
+               <div class="container">
+                  <p style="font-size: 40px; font-weight: 900;">Our Partners</p>
+                  <a href='https://www.certik.com/' target="_blank">
+                     <img src="{{ url_for('static', filename='img/certik.png') }}" height='200px' style="border:2px black solid;">
+                  </a>
+                  <a href='https://pancakeswap.finance/' target="_blank">
+                     <img src="{{ url_for('static', filename='img/pancakeswap.png') }}" height='200px' style="border:2px black solid;">
+                  </a>
+                  <a href='https://www.binance.com/' target="_blank">
+                     <img src="{{ url_for('static', filename='img/binance.png') }}" height='200px' style="border:2px black solid;">
+                  </a>
+               </div>
+               <div class="container">
+                  <p style="font-size: 25px; margin-top: 3px; color:lightyellow"><b>Collecting Your Pikachu Eggs to grow your Pikachu family <br> or sell the eggs earning BNB!</b></p>
+               </div>
+               <div class="container">
+                  <p id='tvl'></p>
+               </div>
+               <div class="container">
+                  <p id='people'></p>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-md-4">
+                  <div class="container altcolor shadow">
+                     <div class="row">
+                        <div>
+						
+                           <img src="{{ url_for('static', filename='img/1.png') }}" height="215" alt="Pichu">
+                        </div>
+                        <div>
+                           <h4 style="margin: 10px; letter-spacing: 0.3px; line-height: 1.4;"> Pichu find the least eggs/hr. <br> - <br> Cost: 1x</h4>
+                           <div class="row" style="margin: 10px;">
+                              <h2><span id="numdragon"> 0</h2>
+                              <h3>Pichu</h3>
+                           </div>
+                        <div class="row" style="margin-top: 30px">
+                           <div style="display: flex; align-items:center; justify-content:center">
+                              <input id="buyPichuInput" class="form-control form-control-lg" type="number" style=" width: 140px; height: 50px; text-align: center; font-size:16px" step="0.1" value="0.1" id="ethtospend">
+                              <h3 style="display:inline-block; margin:10px">BNB</h3>
+                           </div>
+                           <br>
+                           <p>                    
+                              <a onclick="buyPichuInput()" class="bttn-simple bttn-bordered  bttn-xs bttn-default invis" role="button" style="display: inline-block; background-color: #32a354; padding: 10px!important;">
+                              <span id="buyPichu"> Buy Pichu for</span>
+                              </a>
+                           </p>
+						</div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+               <div class="col-md-4">
+                  <div class="container altcolor shadow">
+                     <div class="row">
+                        <div>
+                           <img src="{{ url_for('static', filename='img/2.png') }}" height="215" alt="Pikachu">
+                        </div>
+                        <div>
+                           <h4 style="margin: 10px; letter-spacing: 0.3px; line-height: 1.4;"> Pikachus find 10x more eggs! <br> - <br> Cost: 8x</h4>
+                           <div id="pikachuNotBought" class="row" style="margin: 10px;" >
+                              <h2> 0</h2>
+                              <h3>Pikachus</h3>
+                           </div>
+                           <div id="pikachuBought" class="row" style="display: none; margin: 10px" >
+                              <h3><span id="numdragonice">0</span></h3>
+                              <h3>Pikachu</h3>
+                           </div>
+                           <div class="row" style="margin-top: 30px">
+                              <div style="display: flex; align-items:center; justify-content:center">
+                                 <input id="buyPikachuInput" class="form-control form-control-lg" type="number" style=" width: 140px; height: 50px; text-align: center; font-size:16px" step="0.1" value="0.5" id="ethtospend">
+                                 <h3 style="display:inline-block; margin:10px">BNB</h3>
+                              </div>
+                              <br>
+                              <p>
+                                 <a onclick="buyPikachuInput()"  class="bttn-simple bttn-bordered  bttn-xs bttn-default invis" role="button" style="display: inline-block; background-color: #32a354; padding: 10px!important;">
+                                 <span id="buyPikachu">Buy Pikachus for </span>
+                                 </a>
+                              </p>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-4">
+                  <div class="container altcolor shadow">
+                     <div class="row">
+                        <div>
+                           <img src="{{ url_for('static', filename='img/3.png') }}" height="215" alt="Raichu">
+                        </div>
+                        <div>
+                           <h4 style="margin: 10px; letter-spacing: 0.3px; line-height: 1.4;"> Raichus find 25x more eggs! <br> <span style='font-size:20px; font-weight: 900;'>BEST VALUE!</span> <br> Cost: 20x</h4>
+                           <div id="raichuNotBought" class="row" style="margin: 10px;" >
+                              <h2> 0</h2>
+                              <h3>Raichus</h3>
+                           </div>
+                           <div id="raichuBought" class="row" style="display: none; margin: 10px" >
+                              <h3><span id="numdragonultra">0</span> </h3>
+                              <h3>Raichu</h3>
+                           </div>
+                           <div class="row" style="margin-top: 30px">
+                              <div style="display: flex; align-items:center; justify-content:center">
+                                 <input id="buyRaichuInput" class="form-control form-control-lg" type="number" style=" width: 140px; height: 50px; text-align: center; font-size:16px" step="0.1" value="1" id="ethtospend">
+                                 <h3 style="display:inline-block; margin:10px">BNB</h3>
+                              </div>
+                              <br>
+                              <p><a onclick="buyRaichuInput()" class="bttn-simple bttn-bordered  bttn-xs bttn-default invis" style="display: inline-block; background-color: #32a354; padding: 10px!important;">
+                                 <span id="buyRaichu">
+                                 Buy Raichus for
+                                 </span>
+                                 </a>
+                              </p>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="container altcolor shadow" style="margin-right: 10px">
+                     <div class="row">
+                        <h2>Your Pikachus are finding <span id="production" style="font-weight: bolder">0.0000</span> eggs per hour!</h2>
+                        <div>
+                           <img src="{{ url_for('static', filename='img/egg.gif') }}" alt="Egg" style="opacity: 1.0; margin:5px; width:100px;">
+                           <br><br><br>
+                        </div>
+                        <div style="margin-top: -60px;">
+                           <h2><span class="numeggs" style="font-weight: bolder">0.0000</span> Eggs</h2>
+                           <h2><span id="bnbperhr" style="font-weight: bolder">0.0000</span></h2>
+                        </div>
+                     </div>
+                     <br>
+                     <div class="row">
+                        <p><a style="display: inline-block; background-color: #32a354; padding: 20px!important;" class="bttn-simple bttn-bordered  bttn-md bttn-default invis" onclick="hatchEggs1(displayTransactionCompletedMessage)" role="button">Hatch <span id="hatchdragonquantity">0</span> Pikachus</a>
+                           <a style="display: inline-block; background-color: #ec4c0d; padding: 20px!important;" class="bttn-simple bttn-bordered  bttn-md bttn-default invis" onclick="sellEggs(displayTransactionCompletedMessage)" role="button" style="float: none;">Sell For <span id="sellprice">0</span></a>
+                        </p>
+                        <br>
+                     </div>
+                     <div class="row">
+                        <div></div>
+                        <div>
+                        </div>
+                     </div>
+                     <div class="row">
+                        <div>
+                        </div>
+                        <div>
+                           <h4><span id="sellsforexample">1 BNB = 10000 eggs</span></h4>
+                           <h5><b>Rates may vary with high demand</b></h5>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="row marketing container altcolor shadow" style="margin-top: -50px;">
+            <p style='font-size:25px; font-weight: 900;'>TLDR: Buy Pikachu -> Hatch Pikachu -> Sell Eggs -> Earn BNB!</p>
+            <div class="col-md-6">
+               <h4><b>Earn BNB farming Pikachu Eggs!</b></h4>
+               <p>Pikachu Egg Farm is a farming simulator and idle game on the blockchain. </p>
+			   <p>The more Pikachus you have, the more eggs they find. </p>
+			   <p>Each <b>Pichu</b> finds at a rate of <b>1</b> egg per day)</p>
+			   <p>Each <b>Pikachu</b> finds at a rate of <b>8</b> egg per day)</p>
+			   <p>Each <b>Raichu</b> finds at a rate of <b>20</b> egg per day)</p>
+			   <p>Hatch more Pikachus with your eggs to multiply your production, or cash them out for BNB! </p>
+            </div>
+            <div class="col-md-6">
+               <h4><b>Automated Market</b></h4>
+               <p>Pikachu Egg Farm features a high tech automated market that lets you instantly buy Pikachu or sell Pikachu Eggs. Driven by supply and demand, the price automatically adjusts as players trade.</p>
+               <h4><b>Referrals</b></h4>
+               <p>Earn <b>10%</b> the number of all eggs used by anyone who starts playing using your link: <a onclick="copyRef()" id="playerreflink" class="playerreflink">http://PikachuEgg.Finance/?ref={Your Address}</a></p>
+               <a onclick="copyRef()" id="playerreflink" class="playerreflink">
+               <input style="display:none;" type="text" value="https://pikachuegg.finance/?ref=<Your Address>" id="copytextthing">
+               </a>
+            </div>
+            <a onclick="copyRef()" id="playerreflink" class="playerreflink">
+            </a>
+			<div class="col-md-12">
+				<h4><b>How To Farm Effectively</b></h4>
+					<p><b>Step 1)</b> Purchase Pichu, Pikachu or Raichu with BNB.</p>
+					<p><b>Step 2)</b> Your Pikachu will start to produce eggs. You can hatch your eggs to birth more Pikachus - in turn, this increases your egg generation rate.</p>
+					<p><b>Step 3)</b> Alternatively, you can sell your eggs back to the contract for BNB. You cannot sell back Pikachu, only eggs!</p>
+					<p>This process continues until you've produced as many eggs as you have Pikachu - this takes 24 hours, after which you'll stop generating eggs until you've either hatched or sold them. You can sell or hatch eggs at any time before this 24 hours is up.</p>
+					<p>The contract is open source and visible <a src="https://bscscan.com/address/0x2667d1d061b00792bDA891e4CfE9CFc655C9E5Fd#code">here</a>. There are no functions that the dev can use to drain; the BNB in the contract can only be attained by selling eggs.</p>
+					<p>Don't forget! You can get FREE eggs by referring your friends! Share the link above to get 10% of all the eggs hatched by anyone who starts playing with your link! For those of you considering using/advertising referral links - they're sticky: once you've used someone's, you can't change it!</p>
+					
+			</div>
+         </div>
+            <footer class="footer" style="margin-top: -25px;">
+            </footer>
+            <br>
+         </a>
+      </div>
+      <a onclick="copyRef()" id="playerreflink" class="playerreflink">
+         <!-- /container -->  
+      </a>
+   </body>
+</html>

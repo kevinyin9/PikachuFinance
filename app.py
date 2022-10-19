@@ -33,10 +33,13 @@ def FUN_405(error):
 def FUN_413(error):
     return render_template("page_413.html"), 413
 
+@app.route("/", subdomain="app")
+def game_page():
+    return render_template("game.html")
 
 @app.route("/")
 def root():
-    return render_template("index.html")
+    return render_template("homepage.html")
 
 money = 164365
 @app.route("/tvl")
