@@ -1,4 +1,4 @@
-# Pikachu.Finance
+# Pikachu Finance
 
 ![alt 属性文本](./bg.png)
 
