@@ -1,13 +1,5 @@
-import os
-import datetime
-import hashlib
-from flask import Flask, session, url_for, redirect, render_template, request, abort, flash, send_from_directory, current_app
-from database import list_users, verify, delete_user_from_db, add_user
-from database import read_note_from_db, write_note_into_db, delete_note_from_db, match_user_id_with_note_id
-from database import image_upload_record, list_images_for_user, match_user_id_with_image_uid, delete_image_from_db
-from werkzeug.utils import secure_filename
+from flask import Flask, render_template, send_from_directory, current_app
 from flask_sslify import SSLify
-from OpenSSL import SSL
 import random
 
 app = Flask(__name__)
@@ -54,11 +46,11 @@ def favicon():
     
 @app.route("/.well-known/pki-validation/14F751662DF82FD55D06C4682458AD45.txt")
 def ssl_verify():
-    return send_from_directory("../14F751662DF82FD55D06C4682458AD45.txt")
+    return send_from_directory(directory="./ssl", path="14F751662DF82FD55D06C4682458AD45.txt")
 
 @app.route("/.well-known/pki-validation/C9925BFCCBC6FC5ED209C94EF1F3C1DF.txt")
 def ssl_verify2():
-    return send_from_directory(directory=".", path='C9925BFCCBC6FC5ED209C94EF1F3C1DF.txt')
+    return send_from_directory(directory="./ssl", path='C9925BFCCBC6FC5ED209C94EF1F3C1DF.txt')
 
 @app.route("/sitemap.xml")
 def sitemap():
@@ -66,6 +58,6 @@ def sitemap():
 
 if __name__ == "__main__":
     sslify = SSLify(app)
-    context = ('certificate.crt', 'private.key')
+    context = ('./ssl/certificate.crt', './ssl/private.key')
     #app.run(debug=True, host="140.113.65.184", port=80)
     app.run(debug=True, host="0.0.0.0", port=443, ssl_context=context)
