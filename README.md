@@ -1,6 +1,9 @@
 # Pikachu.Finance
 
-## Contract: https://bscscan.com/address/0x805c5019c5120ee1c6148a935ba95777fd64413b#code
+![alt 属性文本](./bg.png)
+
+## [Check our smart contracts on bscscan](https://bscscan.com/address/0x805c5019c5120ee1c6148a935ba95777fd64413b#code) 
+
 ## The purpose of the game is to collect Pikachu eggs to grow your Pikachu family or choose to sell the eggs for BNB!
 
 ### Earn BNB farming Pikachu Eggs!
