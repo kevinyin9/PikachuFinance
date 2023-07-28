@@ -3,7 +3,6 @@ from flask_sslify import SSLify
 import random
 
 app = Flask(__name__)
-app.config.from_object('config')
 
 @app.errorhandler(401)
 def FUN_401(error):
